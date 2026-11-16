@@ -1,0 +1,1492 @@
+[
+  {
+    "plan": {
+      "plan_id": "FA-1",
+      "indication": "chest infection",
+      "patient": {
+        "patient_id": "FA-1",
+        "display_name": "Mrs A (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [
+          "penicillin"
+        ],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "amoxicillin",
+          "dose_mg": 500,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "missed_allergy"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FA-2",
+      "indication": "urinary infection",
+      "patient": {
+        "patient_id": "FA-2",
+        "display_name": "Mr B (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [
+          "sulfa"
+        ],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "co-trimoxazole",
+          "dose_mg": 960,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "missed_allergy"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FA-3",
+      "indication": "chest infection",
+      "patient": {
+        "patient_id": "FA-3",
+        "display_name": "Mrs C (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [
+          "amoxicillin"
+        ],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "amoxicillin",
+          "dose_mg": 500,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "missed_allergy"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FA-4",
+      "indication": "joint pain",
+      "patient": {
+        "patient_id": "FA-4",
+        "display_name": "Mr D (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [
+          "nsaid"
+        ],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "ibuprofen",
+          "dose_mg": 400,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "missed_allergy"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FR-1",
+      "indication": "type 2 diabetes",
+      "patient": {
+        "patient_id": "FR-1",
+        "display_name": "Mrs E (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 25.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "metformin",
+          "dose_mg": 1000,
+          "doses_per_day": 2,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "renal_dose_error"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FR-2",
+      "indication": "neuropathic pain",
+      "patient": {
+        "patient_id": "FR-2",
+        "display_name": "Mr F (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 40.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "gabapentin",
+          "dose_mg": 800,
+          "doses_per_day": 3,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "renal_dose_error"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FR-3",
+      "indication": "urinary infection",
+      "patient": {
+        "patient_id": "FR-3",
+        "display_name": "Mrs G (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 20.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "ciprofloxacin",
+          "dose_mg": 500,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "renal_dose_error"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FR-4",
+      "indication": "sepsis",
+      "patient": {
+        "patient_id": "FR-4",
+        "display_name": "Mr H (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 60.0,
+        "egfr": 50.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "gentamicin",
+          "dose_mg": 240,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "creatinine",
+        "gentamicin level"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "renal_dose_error"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FI-1",
+      "indication": "atrial fibrillation",
+      "patient": {
+        "patient_id": "FI-1",
+        "display_name": "Mrs I (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "warfarin",
+          "dose_mg": 5,
+          "doses_per_day": 1,
+          "is_new": false,
+          "route": "oral"
+        },
+        {
+          "name": "ibuprofen",
+          "dose_mg": 400,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "INR"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "drug_interaction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FI-2",
+      "indication": "atrial fibrillation",
+      "patient": {
+        "patient_id": "FI-2",
+        "display_name": "Mr J (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "warfarin",
+          "dose_mg": 5,
+          "doses_per_day": 1,
+          "is_new": false,
+          "route": "oral"
+        },
+        {
+          "name": "ciprofloxacin",
+          "dose_mg": 500,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "INR"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "drug_interaction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FI-3",
+      "indication": "heart failure",
+      "patient": {
+        "patient_id": "FI-3",
+        "display_name": "Mrs K (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "lisinopril",
+          "dose_mg": 10,
+          "doses_per_day": 1,
+          "is_new": false,
+          "route": "oral"
+        },
+        {
+          "name": "spironolactone",
+          "dose_mg": 25,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "potassium",
+        "creatinine"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "drug_interaction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FI-4",
+      "indication": "high cholesterol",
+      "patient": {
+        "patient_id": "FI-4",
+        "display_name": "Mr L (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "simvastatin",
+          "dose_mg": 40,
+          "doses_per_day": 1,
+          "is_new": false,
+          "route": "oral"
+        },
+        {
+          "name": "clarithromycin",
+          "dose_mg": 500,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "drug_interaction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FF-1",
+      "indication": "atrial fibrillation",
+      "patient": {
+        "patient_id": "FF-1",
+        "display_name": "Mrs M (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "warfarin",
+          "dose_mg": 5,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": null,
+      "monitoring_labs": [
+        "INR"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "missing_follow_up"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FF-2",
+      "indication": "atrial fibrillation",
+      "patient": {
+        "patient_id": "FF-2",
+        "display_name": "Mr N (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "warfarin",
+          "dose_mg": 5,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "INR"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "missing_follow_up"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FF-3",
+      "indication": "type 2 diabetes",
+      "patient": {
+        "patient_id": "FF-3",
+        "display_name": "Mrs O (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "insulin",
+          "dose_mg": 10,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": null,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "missing_follow_up"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FF-4",
+      "indication": "rheumatoid arthritis",
+      "patient": {
+        "patient_id": "FF-4",
+        "display_name": "Mr P (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "methotrexate",
+          "dose_mg": 15,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 60,
+      "monitoring_labs": [
+        "CBC",
+        "ALT"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "missing_follow_up"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FC-1",
+      "indication": "chest infection",
+      "patient": {
+        "patient_id": "FC-1",
+        "display_name": "Mrs Q (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "amoxicillin",
+          "dose_mg": 500,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        },
+        {
+          "name": "amoxicillin",
+          "dose_mg": 250,
+          "doses_per_day": 3,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "contradictory_instruction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FC-2",
+      "indication": "joint pain",
+      "patient": {
+        "patient_id": "FC-2",
+        "display_name": "Mr R (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "ibuprofen",
+          "dose_mg": 400,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        },
+        {
+          "name": "naproxen",
+          "dose_mg": 500,
+          "doses_per_day": 2,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "contradictory_instruction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FC-3",
+      "indication": "hypothyroidism",
+      "patient": {
+        "patient_id": "FC-3",
+        "display_name": "Mrs S (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "levothyroxine",
+          "dose_mg": 100,
+          "doses_per_day": 1,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": [
+        "take with food",
+        "take on an empty stomach"
+      ]
+    },
+    "injected": [
+      "contradictory_instruction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FC-4",
+      "indication": "joint pain",
+      "patient": {
+        "patient_id": "FC-4",
+        "display_name": "Mr T (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "ibuprofen",
+          "dose_mg": 400,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": [
+        "take on an empty stomach"
+      ]
+    },
+    "injected": [
+      "contradictory_instruction"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FU-1",
+      "indication": "atrial fibrillation",
+      "patient": {
+        "patient_id": "FU-1",
+        "display_name": "Mrs U (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "warfarin",
+          "dose_mg": 5,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 7,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "unmonitored_lab"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FU-2",
+      "indication": "hypertension",
+      "patient": {
+        "patient_id": "FU-2",
+        "display_name": "Mr V (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "lisinopril",
+          "dose_mg": 10,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "creatinine"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "unmonitored_lab"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FU-3",
+      "indication": "rheumatoid arthritis",
+      "patient": {
+        "patient_id": "FU-3",
+        "display_name": "Mrs W (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "methotrexate",
+          "dose_mg": 15,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "CBC"
+      ],
+      "instructions": []
+    },
+    "injected": [
+      "unmonitored_lab"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "FU-4",
+      "indication": "bipolar disorder",
+      "patient": {
+        "patient_id": "FU-4",
+        "display_name": "Mr X (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "lithium",
+          "dose_mg": 400,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [
+      "unmonitored_lab"
+    ],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-01",
+      "indication": "chest infection",
+      "patient": {
+        "patient_id": "C-01",
+        "display_name": "Mrs Y (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "amoxicillin",
+          "dose_mg": 500,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-02",
+      "indication": "pain",
+      "patient": {
+        "patient_id": "C-02",
+        "display_name": "Mr Z (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "paracetamol",
+          "dose_mg": 1000,
+          "doses_per_day": 4,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-03",
+      "indication": "hypertension",
+      "patient": {
+        "patient_id": "C-03",
+        "display_name": "Mrs AA (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "lisinopril",
+          "dose_mg": 10,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "potassium",
+        "creatinine"
+      ],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-04",
+      "indication": "atrial fibrillation",
+      "patient": {
+        "patient_id": "C-04",
+        "display_name": "Mr AB (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "warfarin",
+          "dose_mg": 5,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 7,
+      "monitoring_labs": [
+        "INR"
+      ],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-05",
+      "indication": "type 2 diabetes",
+      "patient": {
+        "patient_id": "C-05",
+        "display_name": "Mrs AC (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "metformin",
+          "dose_mg": 500,
+          "doses_per_day": 2,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-06",
+      "indication": "hypothyroidism",
+      "patient": {
+        "patient_id": "C-06",
+        "display_name": "Mr AD (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "levothyroxine",
+          "dose_mg": 100,
+          "doses_per_day": 1,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": [
+        "take on an empty stomach"
+      ]
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-07",
+      "indication": "high cholesterol",
+      "patient": {
+        "patient_id": "C-07",
+        "display_name": "Mrs AE (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "atorvastatin",
+          "dose_mg": 20,
+          "doses_per_day": 1,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-08",
+      "indication": "rheumatoid arthritis",
+      "patient": {
+        "patient_id": "C-08",
+        "display_name": "Mr AF (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "methotrexate",
+          "dose_mg": 15,
+          "doses_per_day": 1,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "CBC",
+        "ALT"
+      ],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-09",
+      "indication": "chest infection",
+      "patient": {
+        "patient_id": "C-09",
+        "display_name": "Mrs AG (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "amoxicillin",
+          "dose_mg": 500,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        },
+        {
+          "name": "paracetamol",
+          "dose_mg": 1000,
+          "doses_per_day": 4,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-10",
+      "indication": "joint pain",
+      "patient": {
+        "patient_id": "C-10",
+        "display_name": "Mr AH (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "ibuprofen",
+          "dose_mg": 400,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": [
+        "take with food"
+      ]
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-11",
+      "indication": "neuropathic pain",
+      "patient": {
+        "patient_id": "C-11",
+        "display_name": "Mrs AI (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "gabapentin",
+          "dose_mg": 300,
+          "doses_per_day": 3,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "C-12",
+      "indication": "urinary infection",
+      "patient": {
+        "patient_id": "C-12",
+        "display_name": "Mr AJ (synthetic)",
+        "age_years": 68,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": 85.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "ciprofloxacin",
+          "dose_mg": 500,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": null
+  },
+  {
+    "plan": {
+      "plan_id": "E-1",
+      "indication": "type 2 diabetes",
+      "patient": {
+        "patient_id": "E-1",
+        "display_name": "Mrs AK (synthetic)",
+        "age_years": 72,
+        "sex": "F",
+        "weight_kg": 70.0,
+        "egfr": null,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "metformin",
+          "dose_mg": 1000,
+          "doses_per_day": 2,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": "renal_dose_error"
+  },
+  {
+    "plan": {
+      "plan_id": "E-2",
+      "indication": "neuropathic pain",
+      "patient": {
+        "patient_id": "E-2",
+        "display_name": "Mr AL (synthetic)",
+        "age_years": 70,
+        "sex": "M",
+        "weight_kg": 80.0,
+        "egfr": null,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "gabapentin",
+          "dose_mg": 600,
+          "doses_per_day": 3,
+          "is_new": false,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": "renal_dose_error"
+  },
+  {
+    "plan": {
+      "plan_id": "E-3",
+      "indication": "chest infection",
+      "patient": {
+        "patient_id": "E-3",
+        "display_name": "Mrs AM (synthetic)",
+        "age_years": 65,
+        "sex": "F",
+        "weight_kg": 65.0,
+        "egfr": 80.0,
+        "allergies": [],
+        "allergies_known": false,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "amoxicillin",
+          "dose_mg": 500,
+          "doses_per_day": 3,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": "missed_allergy"
+  },
+  {
+    "plan": {
+      "plan_id": "E-4",
+      "indication": "urinary infection",
+      "patient": {
+        "patient_id": "E-4",
+        "display_name": "Mr AN (synthetic)",
+        "age_years": 66,
+        "sex": "M",
+        "weight_kg": 75.0,
+        "egfr": 78.0,
+        "allergies": [],
+        "allergies_known": false,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "co-trimoxazole",
+          "dose_mg": 960,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": "missed_allergy"
+  },
+  {
+    "plan": {
+      "plan_id": "E-5",
+      "indication": "sepsis",
+      "patient": {
+        "patient_id": "E-5",
+        "display_name": "Mrs AO (synthetic)",
+        "age_years": 74,
+        "sex": "F",
+        "weight_kg": null,
+        "egfr": 45.0,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "gentamicin",
+          "dose_mg": 240,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [
+        "creatinine",
+        "gentamicin level"
+      ],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": "renal_dose_error"
+  },
+  {
+    "plan": {
+      "plan_id": "E-6",
+      "indication": "urinary infection",
+      "patient": {
+        "patient_id": "E-6",
+        "display_name": "Mr AP (synthetic)",
+        "age_years": 71,
+        "sex": "M",
+        "weight_kg": 82.0,
+        "egfr": null,
+        "allergies": [],
+        "allergies_known": true,
+        "conditions": [],
+        "labs": []
+      },
+      "medications": [
+        {
+          "name": "ciprofloxacin",
+          "dose_mg": 500,
+          "doses_per_day": 2,
+          "is_new": true,
+          "route": "oral"
+        }
+      ],
+      "follow_up_days": 30,
+      "monitoring_labs": [],
+      "instructions": []
+    },
+    "injected": [],
+    "expected_abstention": "renal_dose_error"
+  }
+]
