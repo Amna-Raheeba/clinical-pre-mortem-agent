@@ -1,0 +1,43 @@
+plan_id,injected,found,verdict,n_findings,n_edits,n_valid_edits,abstentions
+FA-1,missed_allergy,missed_allergy,RISKS FOUND,1,1,1,
+FA-2,missed_allergy,missed_allergy,RISKS FOUND,1,1,1,
+FA-3,missed_allergy,missed_allergy,RISKS FOUND,1,1,1,
+FA-4,missed_allergy,missed_allergy,RISKS FOUND,1,1,1,
+FR-1,renal_dose_error,renal_dose_error,RISKS FOUND,1,1,1,
+FR-2,renal_dose_error,renal_dose_error,RISKS FOUND,1,1,1,
+FR-3,renal_dose_error,renal_dose_error,RISKS FOUND,1,1,1,
+FR-4,renal_dose_error,renal_dose_error,RISKS FOUND,1,1,1,
+FI-1,drug_interaction,drug_interaction,RISKS FOUND,1,1,1,
+FI-2,drug_interaction,drug_interaction,RISKS FOUND,1,1,1,
+FI-3,drug_interaction,drug_interaction,RISKS FOUND,1,1,1,
+FI-4,drug_interaction,drug_interaction,RISKS FOUND,1,1,1,
+FF-1,missing_follow_up,missing_follow_up,RISKS FOUND,1,1,1,
+FF-2,missing_follow_up,missing_follow_up,RISKS FOUND,1,1,1,
+FF-3,missing_follow_up,missing_follow_up,RISKS FOUND,1,1,1,
+FF-4,missing_follow_up,missing_follow_up,RISKS FOUND,1,1,1,
+FC-1,contradictory_instruction,contradictory_instruction,RISKS FOUND,1,1,1,
+FC-2,contradictory_instruction,contradictory_instruction,RISKS FOUND,1,1,1,
+FC-3,contradictory_instruction,contradictory_instruction,RISKS FOUND,1,1,1,
+FC-4,contradictory_instruction,contradictory_instruction,RISKS FOUND,1,1,1,
+FU-1,unmonitored_lab,unmonitored_lab,RISKS FOUND,1,1,1,
+FU-2,unmonitored_lab,unmonitored_lab,RISKS FOUND,1,1,1,
+FU-3,unmonitored_lab,unmonitored_lab,RISKS FOUND,1,1,1,
+FU-4,unmonitored_lab,unmonitored_lab,RISKS FOUND,1,1,1,
+C-01,,,SAFE,0,0,0,
+C-02,,,SAFE,0,0,0,
+C-03,,,SAFE,0,0,0,
+C-04,,,SAFE,0,0,0,
+C-05,,,SAFE,0,0,0,
+C-06,,,SAFE,0,0,0,
+C-07,,,SAFE,0,0,0,
+C-08,,,SAFE,0,0,0,
+C-09,,,SAFE,0,0,0,
+C-10,,,SAFE,0,0,0,
+C-11,,,SAFE,0,0,0,
+C-12,,,SAFE,0,0,0,
+E-1,,,ABSTAINED,0,0,0,renal_dose_error
+E-2,,,ABSTAINED,0,0,0,renal_dose_error
+E-3,,,ABSTAINED,0,0,0,missed_allergy
+E-4,,,ABSTAINED,0,0,0,missed_allergy
+E-5,,,ABSTAINED,0,0,0,renal_dose_error
+E-6,,,ABSTAINED,0,0,0,renal_dose_error
