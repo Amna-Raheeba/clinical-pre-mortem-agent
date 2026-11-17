@@ -25,7 +25,8 @@ CarePlan (JSON / Python objects)
   -> ranking.py         severity x plausibility, highest risk first
   -> stories.py         failure story per finding (prose only)
   -> edits.py           minimal edit for the top 2, verified by re-running
-  -> PreMortemReport    verdict + ranked findings + stories + edits
+  -> chains.py          second-order chains + the one edit that breaks each
+  -> PreMortemReport    verdict + ranked findings + stories + edits + chains
 ```
 
 ## 3. Modules
@@ -40,8 +41,9 @@ CarePlan (JSON / Python objects)
 | `ranking.py` | `risk_score = severity x plausibility`, deterministic tie-breaks |
 | `stories.py` | `MockStoryteller` (deterministic templates) and `LLMStoryteller` (opt-in, raises without a backend) |
 | `edits.py` | Minimal edit per failure, verified: re-run detectors, must kill the failure and add none |
-| `pre_mortem.py` | Orchestrator: abstain -> detect -> rank -> imagine -> edit |
-| `evaluation.py` | Seeded synthetic dataset (42 cases) and the four metrics |
+| `chains.py` | Second-order chains (enabler -> enabled, shared drug) and the single verified chain-breaking edit |
+| `pre_mortem.py` | Orchestrator: abstain -> detect -> rank -> imagine -> edit -> chain |
+| `evaluation.py` | Seeded synthetic dataset (50 cases) and the seven metrics |
 | `plan_io.py` | Plan JSON load/save, shared by CLI and dashboard |
 
 ## 4. Design rules
