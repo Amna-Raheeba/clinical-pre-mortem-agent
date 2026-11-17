@@ -10,6 +10,9 @@ One call reviews a whole plan:
    only; the story never changes the verdict).
 5. **Edit** — for the top two failures, compute the minimal plan edit
    that kills the failure, verified by re-running the detectors.
+6. **Chain** — detect second-order failure chains (one failure enabling
+   a second) and, for each, the single edit that breaks the chain,
+   verified by re-running chain detection on the edited plan.
 
 The verdict is code: ``SAFE`` (no findings, no abstentions),
 ``RISKS FOUND`` (findings, no abstentions), ``ABSTAINED`` (no findings,
@@ -18,6 +21,7 @@ but some categories could not be judged), or both.
 from __future__ import annotations
 
 from .abstention import check_abstentions
+from .chains import break_chain, detect_chains
 from .detectors import run_all_detectors
 from .edits import propose_edit
 from .models import CarePlan, PreMortemReport
@@ -46,6 +50,13 @@ def run_pre_mortem(plan: CarePlan, storyteller=None) -> PreMortemReport:
         if edit is not None:
             edits.append(edit)
 
+    chains = detect_chains(findings)
+    chain_breaks = []
+    for chain in chains:
+        chain_break = break_chain(plan, chain)
+        if chain_break is not None:
+            chain_breaks.append(chain_break)
+
     if findings and abstentions:
         verdict = "RISKS FOUND + ABSTAINED"
     elif findings:
@@ -63,4 +74,6 @@ def run_pre_mortem(plan: CarePlan, storyteller=None) -> PreMortemReport:
         edits=edits,
         abstentions=abstentions,
         verdict=verdict,
+        chains=chains,
+        chain_breaks=chain_breaks,
     )

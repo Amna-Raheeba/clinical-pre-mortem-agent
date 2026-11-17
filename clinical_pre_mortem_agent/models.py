@@ -131,6 +131,49 @@ class Abstention:
     reason: str  # which evidence is missing, e.g. "eGFR not recorded"
 
 
+@dataclass(frozen=True)
+class FailureChain:
+    """A second-order failure chain: one failure enables a second.
+
+    The enabler is the failure that lets the enabled failure go
+    undetected or unreviewed — e.g. the INR that was never ordered is
+    the test that would have revealed a warfarin interaction's harm.
+    A chain exists only when both findings fire and they share a drug.
+    Depth is the number of findings in the chain (2 today: the link
+    table only defines two-step chains). The chain risk is the sum of
+    the two findings' risk scores — the harm, plus the hiding of it.
+    """
+
+    enabler: Finding
+    enabled: Finding
+    link: str  # why the enabler hides the enabled failure
+
+    @property
+    def depth(self) -> int:
+        return 2
+
+    @property
+    def risk_score(self) -> float:
+        return self.enabler.risk_score + self.enabled.risk_score
+
+
+@dataclass(frozen=True)
+class ChainBreak:
+    """The single edit that breaks a chain, verified by re-running.
+
+    Breaking a chain means the enabling link no longer exists: after
+    the edit, the enabler finding stops firing, so the enabled failure
+    can no longer hide behind it. It does NOT fix the enabled failure
+    itself — that still needs its own edit, and the report says so.
+    ``chain_broken`` is True only when the edit is verified valid AND
+    chain detection on the edited plan finds no chain at all.
+    """
+
+    chain: FailureChain
+    edit: PlanEdit
+    chain_broken: bool
+
+
 @dataclass
 class PreMortemReport:
     """The full output of one pre-mortem review."""
@@ -142,6 +185,8 @@ class PreMortemReport:
     edits: list[PlanEdit]  # minimal edits for the top failures
     abstentions: list[Abstention]
     verdict: str  # "SAFE" | "RISKS FOUND" | "ABSTAINED" | "RISKS FOUND + ABSTAINED"
+    chains: list[FailureChain] = field(default_factory=list)
+    chain_breaks: list[ChainBreak] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return {
@@ -176,4 +221,25 @@ class PreMortemReport:
                 {"category": a.category, "reason": a.reason} for a in self.abstentions
             ],
             "stories": self.stories,
+            "chains": [
+                {
+                    "enabler": c.enabler.category,
+                    "enabled": c.enabled.category,
+                    "drug": c.enabled.drug,
+                    "link": c.link,
+                    "depth": c.depth,
+                    "risk_score": round(c.risk_score, 2),
+                }
+                for c in self.chains
+            ],
+            "chain_breaks": [
+                {
+                    "enabler": b.chain.enabler.category,
+                    "enabled": b.chain.enabled.category,
+                    "action": b.edit.action,
+                    "chain_broken": b.chain_broken,
+                    "edit_valid": b.edit.is_valid,
+                }
+                for b in self.chain_breaks
+            ],
         }

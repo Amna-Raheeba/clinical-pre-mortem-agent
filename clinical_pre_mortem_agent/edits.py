@@ -8,6 +8,12 @@ copy of the plan and the detectors are re-run. The edit counts only if
 the target failure no longer fires *and* no new failure appears. An
 edit that trades one failure for another is reported as invalid, not
 hidden.
+
+The drafting step (:func:`_draft_edit`) is kept separate from the
+verification step so callers that need the edited plan itself — the
+chain breaker in :mod:`chains`, which must re-run detection on the
+edited plan — can get both the edit and the plan it was verified on
+via :func:`propose_edit_with_plan`.
 """
 from __future__ import annotations
 
@@ -33,8 +39,13 @@ def _remove_med(plan: CarePlan, name: str) -> CarePlan:
     return plan.copy_with(medications=meds)
 
 
-def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
-    """Propose the minimal edit for one finding, or None if none exists."""
+def _draft_edit(plan: CarePlan, finding: Finding,
+                ) -> tuple[str, str, CarePlan] | None:
+    """Draft the minimal edit for one finding: (action, description, edited plan).
+
+    Returns None when no edit exists for this finding. The draft is
+    unverified — callers must run it through :func:`_verified`.
+    """
     cat = finding.category
 
     if cat == "missed_allergy":
@@ -42,9 +53,9 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
         alt = kb.ALTERNATIVES.get(drug.lower())
         if alt is None:
             edited = _remove_med(plan, drug)
-            return _verified(plan, edited, finding,
-                             f"stop {drug} (no safe substitute in the demo table)",
-                             f"Removed {drug}; no substitute listed for this drug.")
+            return (f"stop {drug} (no safe substitute in the demo table)",
+                    f"Removed {drug}; no substitute listed for this drug.",
+                    edited)
         substitute, note = alt
         old = _find_med(plan, drug)
         if old is None:
@@ -53,9 +64,9 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
                          doses_per_day=old.doses_per_day, is_new=old.is_new,
                          route=old.route)
         edited = _replace_med(plan, old, new)
-        return _verified(plan, edited, finding,
-                         f"substitute {drug} -> {substitute}",
-                         f"Replaced {drug} with {substitute} ({note}).")
+        return (f"substitute {drug} -> {substitute}",
+                f"Replaced {drug} with {substitute} ({note}).",
+                edited)
 
     if cat == "renal_dose_error":
         drug = finding.drug
@@ -73,10 +84,10 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
                              doses_per_day=med.doses_per_day, is_new=med.is_new,
                              route=med.route)
             edited = _replace_med(plan, med, new)
-            return _verified(plan, edited, finding,
-                             f"reduce gentamicin to {new_dose:.0f} mg x {med.doses_per_day}/day",
-                             f"Reduced gentamicin to the {kb.GENTAMICIN_MAX_MG_PER_KG_PER_DAY} "
-                             f"mg/kg/day limit for this weight and eGFR.")
+            return (f"reduce gentamicin to {new_dose:.0f} mg x {med.doses_per_day}/day",
+                    f"Reduced gentamicin to the {kb.GENTAMICIN_MAX_MG_PER_KG_PER_DAY} "
+                    f"mg/kg/day limit for this weight and eGFR.",
+                    edited)
         egfr = plan.patient.egfr
         if egfr is None:
             return None
@@ -84,18 +95,18 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
             if egfr < threshold:
                 if max_daily == 0:
                     edited = _remove_med(plan, drug)
-                    return _verified(plan, edited, finding,
-                                     f"stop {drug} (contraindicated at eGFR {egfr:.0f})",
-                                     f"Stopped {drug}: contraindicated below eGFR {threshold:.0f}.")
+                    return (f"stop {drug} (contraindicated at eGFR {egfr:.0f})",
+                            f"Stopped {drug}: contraindicated below eGFR {threshold:.0f}.",
+                            edited)
                 new_dose = max_daily / med.doses_per_day
                 new = Medication(name=med.name, dose_mg=new_dose,
                                  doses_per_day=med.doses_per_day,
                                  is_new=med.is_new, route=med.route)
                 edited = _replace_med(plan, med, new)
-                return _verified(plan, edited, finding,
-                                 f"reduce {drug} to {new_dose:.0f} mg x {med.doses_per_day}/day",
-                                 f"Reduced {drug} to the {max_daily:.0f} mg/day limit "
-                                 f"for eGFR below {threshold:.0f}.")
+                return (f"reduce {drug} to {new_dose:.0f} mg x {med.doses_per_day}/day",
+                        f"Reduced {drug} to the {max_daily:.0f} mg/day limit "
+                        f"for eGFR below {threshold:.0f}.",
+                        edited)
         return None
 
     if cat == "drug_interaction":
@@ -106,10 +117,10 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
         if hold is None:
             return None
         edited = _remove_med(plan, hold.name)
-        return _verified(plan, edited, finding,
-                         f"hold {hold.name} while the other drug continues",
-                         f"Held {hold.name} for the duration of the interacting course; "
-                         f"review before restarting.")
+        return (f"hold {hold.name} while the other drug continues",
+                f"Held {hold.name} for the duration of the interacting course; "
+                f"review before restarting.",
+                edited)
 
     if cat == "missing_follow_up":
         drug = finding.drug
@@ -117,9 +128,9 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
         if required is None:
             return None
         edited = plan.copy_with(follow_up_days=required)
-        return _verified(plan, edited, finding,
-                         f"schedule follow-up within {required} days",
-                         f"Scheduled follow-up in {required} days for newly started {drug}.")
+        return (f"schedule follow-up within {required} days",
+                f"Scheduled follow-up in {required} days for newly started {drug}.",
+                edited)
 
     if cat == "contradictory_instruction":
         # Duplicate dose: keep the first listed dose, drop the second.
@@ -173,9 +184,9 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
         if not changed:
             return None
         edited = plan.copy_with(medications=kept, instructions=tuple(instructions))
-        return _verified(plan, edited, finding,
-                         "resolve the contradictory instruction/dose",
-                         "Kept one consistent dose and instruction; removed the conflicting entry.")
+        return ("resolve the contradictory instruction/dose",
+                "Kept one consistent dose and instruction; removed the conflicting entry.",
+                edited)
 
     if cat == "unmonitored_lab":
         drug = finding.drug
@@ -187,11 +198,35 @@ def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
             if lab.lower() not in {o.lower() for o in ordered}:
                 ordered.append(lab)
         edited = plan.copy_with(monitoring_labs=tuple(ordered))
-        return _verified(plan, edited, finding,
-                         f"order monitoring labs: {', '.join(required)}",
-                         f"Ordered {', '.join(required)} for {drug}.")
+        return (f"order monitoring labs: {', '.join(required)}",
+                f"Ordered {', '.join(required)} for {drug}.",
+                edited)
 
     return None
+
+
+def propose_edit(plan: CarePlan, finding: Finding) -> PlanEdit | None:
+    """Propose the minimal edit for one finding, or None if none exists."""
+    drafted = _draft_edit(plan, finding)
+    if drafted is None:
+        return None
+    action, description, edited = drafted
+    return _verified(plan, edited, finding, action, description)
+
+
+def propose_edit_with_plan(plan: CarePlan, finding: Finding,
+                           ) -> tuple[PlanEdit | None, CarePlan | None]:
+    """Propose the minimal edit for one finding, plus the edited plan.
+
+    The returned plan is the copy the edit was verified on, so callers
+    can re-run further checks (e.g. chain detection) on exactly the
+    plan the edit produces. Returns (None, None) when no edit exists.
+    """
+    drafted = _draft_edit(plan, finding)
+    if drafted is None:
+        return None, None
+    action, description, edited = drafted
+    return _verified(plan, edited, finding, action, description), edited
 
 
 def _verified(original: CarePlan, edited: CarePlan, finding: Finding,

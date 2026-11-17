@@ -73,6 +73,9 @@ FOLLOW_UP_REQUIRED: dict[str, int] = {
     "lisinopril": 30,
     "methotrexate": 30,
     "amiodarone": 30,
+    # Gentamicin levels must be reviewed within days of starting: a
+    # weight-based, nephrotoxic drug with a narrow therapeutic window.
+    "gentamicin": 3,
 }
 
 # ---------------------------------------------------------------- administration
@@ -105,6 +108,25 @@ ALTERNATIVES: dict[str, tuple[str, str]] = {
     "sulfamethoxazole": ("nitrofurantoin", "alternative for uncomplicated UTI"),
     "co-trimoxazole": ("nitrofurantoin", "alternative for uncomplicated UTI"),
 }
+
+# ---------------------------------------------------------------- failure chains
+# Second-order failure chains: (enabler category, enabled category, link).
+# A chain exists when both findings fire AND they share a drug — the
+# enabler is the failure that lets the enabled failure go undetected or
+# unreviewed. The link text names the mechanism. This is a statement
+# about this deterministic taxonomy, not a claim about real clinical
+# causality: "enables" here means "removes the check that would have
+# caught it", which is exactly what the rule engine can see.
+CHAIN_LINKS: tuple[tuple[str, str, str], ...] = (
+    ("unmonitored_lab", "renal_dose_error",
+     "the missing lab is the test that would have revealed the drug accumulating"),
+    ("unmonitored_lab", "drug_interaction",
+     "the missing lab is the test that would have revealed the interaction's harm"),
+    ("missing_follow_up", "drug_interaction",
+     "the missed visit is where the interaction would have been caught"),
+    ("missing_follow_up", "renal_dose_error",
+     "the missed visit is where the dose would have been reviewed"),
+)
 
 # Earliest observable warning sign per failure category.
 WARNING_SIGNS: dict[str, str] = {

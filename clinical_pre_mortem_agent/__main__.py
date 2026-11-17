@@ -41,6 +41,17 @@ def _print_report(report) -> None:
               f"new failure: {edit.introduces_new_failure})")
     for abstention in report.abstentions:
         print(f"\n  Abstained on {abstention.category}: {abstention.reason}")
+    for chain_break in report.chain_breaks:
+        chain = chain_break.chain
+        status = "BROKEN" if chain_break.chain_broken else "NOT BROKEN"
+        print(f"\n  Chain [{status}]: {chain.enabler.category} -> "
+              f"{chain.enabled.category} (depth {chain.depth}, "
+              f"risk {chain.risk_score:.2f})")
+        print(f"    {chain.link}.")
+        print(f"    Break: {chain_break.edit.action} "
+              f"(valid: {chain_break.edit.is_valid}) — breaks the chain by "
+              f"restoring the check; the enabled failure still needs its "
+              f"own edit.")
 
 
 def main(argv: list[str] | None = None) -> int:

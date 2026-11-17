@@ -8,13 +8,22 @@ language-model prose is used only to narrate the failure story, never to
 decide it. All data is synthetic — never real patient data.
 
 Public API: :func:`run_pre_mortem`, :class:`CarePlan`,
-:class:`PatientRecord`, :class:`Medication`, :func:`evaluate`.
+:class:`PatientRecord`, :class:`Medication`, :func:`evaluate`,
+:func:`detect_chains`, :func:`break_chain`.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
-from .evaluation import build_eval_dataset, evaluate, sample_plan
-from .models import CarePlan, LabResult, Medication, PatientRecord
+from .chains import break_chain, detect_chains
+from .evaluation import build_eval_dataset, evaluate, load_eval_cases, sample_plan
+from .models import (
+    CarePlan,
+    ChainBreak,
+    FailureChain,
+    LabResult,
+    Medication,
+    PatientRecord,
+)
 from .pre_mortem import run_pre_mortem
 
 __all__ = [
@@ -26,5 +35,10 @@ __all__ = [
     "LabResult",
     "evaluate",
     "build_eval_dataset",
+    "load_eval_cases",
     "sample_plan",
+    "detect_chains",
+    "break_chain",
+    "FailureChain",
+    "ChainBreak",
 ]
