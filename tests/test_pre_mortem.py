@@ -60,8 +60,9 @@ def test_edits_target_the_top_ranked_failures():
 
 def test_dataset_has_42_cases_with_the_right_split():
     cases = build_eval_dataset()
-    assert len(cases) == 42
-    assert sum(1 for c in cases if c.injected) == 24
+    assert len(cases) == 50
+    assert sum(1 for c in cases if c.injected) == 32
+    assert sum(1 for c in cases if c.expected_chains) == 8
     assert sum(1 for c in cases if not c.injected and c.expected_abstention is None) == 12
     assert sum(1 for c in cases if c.expected_abstention is not None) == 6
 
@@ -79,8 +80,13 @@ def test_dataset_covers_all_six_categories():
 def test_evaluation_metrics_are_measured_not_asserted():
     metrics = evaluate()
     assert metrics["failure_recall"] == 1.0
-    assert metrics["injected_found"] == 24 and metrics["injected_total"] == 24
+    assert metrics["injected_found"] == 40 and metrics["injected_total"] == 40
     assert metrics["false_alarm_rate"] == 0.0
     assert metrics["minimal_edit_success"] == 1.0
     assert metrics["abstention_rate"] == 1.0
-    assert len(metrics["rows"]) == 42
+    assert metrics["chain_recall"] == 1.0
+    assert metrics["chains_found"] == 8 and metrics["chains_expected"] == 8
+    assert metrics["chain_break_rate"] == 1.0
+    assert metrics["chains_broken"] == 8 and metrics["chains_detected"] == 8
+    assert metrics["false_chain_rate"] == 0.0
+    assert len(metrics["rows"]) == 50

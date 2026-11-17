@@ -60,14 +60,16 @@ def test_metformin_reduced_limit_in_egfr_band():
 
 
 def test_gentamicin_weight_based_limit():
+    # follow_up_days=3: gentamicin levels must be reviewed within 3 days,
+    # so the follow-up rule must not fire a second, unintended fault here.
     plan = _plan([Medication("gentamicin", 240, 2, is_new=True)], egfr=50.0, weight=60.0,
-                 monitoring_labs=("creatinine", "gentamicin level"))
+                 follow_up_days=3, monitoring_labs=("creatinine", "gentamicin level"))
     assert _cats(plan) == {"renal_dose_error"}
 
 
 def test_gentamicin_safe_dose_passes():
     plan = _plan([Medication("gentamicin", 120, 2, is_new=True)], egfr=50.0, weight=70.0,
-                 monitoring_labs=("creatinine", "gentamicin level"))
+                 follow_up_days=3, monitoring_labs=("creatinine", "gentamicin level"))
     assert _cats(plan) == set()
 
 

@@ -48,7 +48,9 @@ def test_load_evaluation_reads_saved_json(tmp_path):
     loaded = helpers.load_evaluation(tmp_path)
     assert loaded is not None
     assert loaded["failure_recall"] == 1.0
-    assert loaded["n_cases"] == 42
+    assert loaded["n_cases"] == 50
+    assert loaded["chain_recall"] == 1.0
+    assert loaded["chain_break_rate"] == 1.0
 
 
 def test_evaluation_metrics_runs_live():
