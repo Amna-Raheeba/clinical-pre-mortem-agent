@@ -1,0 +1,35 @@
+{
+  "plan_id": "DEMO-1",
+  "indication": "atrial fibrillation with new joint pain",
+  "patient": {
+    "patient_id": "DEMO-1",
+    "display_name": "Mrs Demo (synthetic)",
+    "age_years": 68,
+    "sex": "F",
+    "weight_kg": 70.0,
+    "egfr": 72.0,
+    "allergies": [],
+    "allergies_known": true,
+    "conditions": [],
+    "labs": []
+  },
+  "medications": [
+    {
+      "name": "warfarin",
+      "dose_mg": 5,
+      "doses_per_day": 1,
+      "is_new": false,
+      "route": "oral"
+    },
+    {
+      "name": "ibuprofen",
+      "dose_mg": 400,
+      "doses_per_day": 3,
+      "is_new": true,
+      "route": "oral"
+    }
+  ],
+  "follow_up_days": null,
+  "monitoring_labs": [],
+  "instructions": []
+}
