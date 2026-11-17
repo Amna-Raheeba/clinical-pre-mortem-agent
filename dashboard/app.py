@@ -82,14 +82,25 @@ with tab_plan:
             for edit in summary["edits"]:
                 mark = "VALID" if edit["is_valid"] else "INVALID"
                 st.write(f"- [{mark}] **{edit['action']}** — {edit['description']}")
+        if summary["chains"]:
+            st.subheader("Failure chains — one failure enabling a second")
+            st.dataframe(helpers.chains_table(summary), width="stretch")
+            for chain_break in summary["chain_breaks"]:
+                status = "BROKEN" if chain_break["chain_broken"] else "NOT BROKEN"
+                st.write(f"- [{status}] **{chain_break['action']}** — breaks the "
+                         f"{chain_break['enabler']} -> {chain_break['enabled']} chain "
+                         f"by restoring the check that would have caught it. It does "
+                         f"not fix the enabled failure itself; that still needs its "
+                         f"own edit.")
         if summary["abstentions"]:
             st.subheader("Abstentions")
             for abstention in summary["abstentions"]:
                 st.write(f"- {abstention['category']}: {abstention['reason']}")
 
 with tab_eval:
-    st.subheader("Seeded evaluation — 42 synthetic cases")
-    st.write("24 faulty plans (4 per category), 12 clean plans, 6 evidence-absent plans. "
+    st.subheader("Seeded evaluation — 50 synthetic cases")
+    st.write("24 faulty plans (4 per category), 8 chained plans (2 per link), "
+             "12 clean plans, 6 evidence-absent plans. "
              "Run live on this page; nothing is cached from an old run.")
     if st.button("Run evaluation"):
         metrics = helpers.evaluation_metrics()
@@ -106,12 +117,24 @@ with tab_eval:
         col4.metric("Abstention rate",
                     f"{metrics['abstention_rate']:.2f}",
                     f"{metrics['abstain_correct']}/{metrics['n_evidence_absent']} correct")
+        col5, col6, col7 = st.columns(3)
+        col5.metric("Chain recall",
+                    f"{metrics['chain_recall']:.2f}",
+                    f"{metrics['chains_found']}/{metrics['chains_expected']} expected chains found")
+        col6.metric("Chain-break rate",
+                    f"{metrics['chain_break_rate']:.2f}",
+                    f"{metrics['chains_broken']}/{metrics['chains_detected']} chains broken by one edit")
+        col7.metric("False-chain rate",
+                    f"{metrics['false_chain_rate']:.2f}",
+                    f"{metrics['clean_with_chains']}/{metrics['n_clean']} clean plans with a chain")
         st.write(
             "Honest limit: the faults are injected from the same knowledge "
             "base the detectors read, so recall measures consistency, not "
             "performance on faults invented by someone else. The "
             "false-alarm rate on genuinely safe plans is the more "
-            "informative number."
+            "informative number. The same limit applies to the chains: "
+            "they are defined over the deterministic taxonomy, not real "
+            "clinical causality."
         )
     stored = helpers.load_evaluation(ROOT / "results")
     if stored is not None:

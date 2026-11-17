@@ -14,10 +14,11 @@ streamlit run dashboard/app.py
 
 1. **Run a pre-mortem** — pick a sample plan (faulty, clean, or
    evidence-absent), run the pipeline, and see the verdict, the ranked
-   failures with their stories, the verified minimal edits, and any
-   abstentions.
-2. **Evaluation** — run the seeded 42-case evaluation live and see the
-   four metrics, plus the last saved run from `results/evaluation.json`.
+   failures with their stories, the verified minimal edits, any
+   second-order failure chains with the single edit that breaks each,
+   and any abstentions.
+2. **Evaluation** — run the seeded 50-case evaluation live and see the
+   seven metrics, plus the last saved run from `results/evaluation.json`.
 
 ## Structure
 

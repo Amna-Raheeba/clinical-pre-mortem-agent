@@ -58,6 +58,28 @@ def run_plan(plan: CarePlan) -> dict:
             {"category": a.category, "reason": a.reason}
             for a in report.abstentions
         ],
+        "chains": [
+            {
+                "enabler": c.enabler.category,
+                "enabled": c.enabled.category,
+                "drug": c.enabled.drug,
+                "link": c.link,
+                "depth": c.depth,
+                "risk_score": round(c.risk_score, 2),
+            }
+            for c in report.chains
+        ],
+        "chain_breaks": [
+            {
+                "enabler": b.chain.enabler.category,
+                "enabled": b.chain.enabled.category,
+                "action": b.edit.action,
+                "description": b.edit.description,
+                "chain_broken": b.chain_broken,
+                "is_valid": b.edit.is_valid,
+            }
+            for b in report.chain_breaks
+        ],
     }
 
 
@@ -73,6 +95,21 @@ def findings_table(summary: dict) -> list[dict]:
             "Detail": f["detail"],
         }
         for f in summary["findings"]
+    ]
+
+
+def chains_table(summary: dict) -> list[dict]:
+    """Rows for the chains table: one row per second-order chain."""
+    return [
+        {
+            "Enabler": c["enabler"],
+            "Enabled": c["enabled"],
+            "Drug": c["drug"],
+            "Depth": c["depth"],
+            "Chain risk": c["risk_score"],
+            "Why it hides it": c["link"],
+        }
+        for c in summary["chains"]
     ]
 
 
