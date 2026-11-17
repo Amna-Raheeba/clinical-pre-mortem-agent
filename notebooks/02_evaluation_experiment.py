@@ -1,13 +1,14 @@
-"""Notebook 02: evaluation experiment — per-category recall and the
-honest-limit analysis.
+"""Notebook 02: evaluation experiment — per-category recall, chain metrics,
+and the honest-limit analysis.
 
 Run from the repo root:
 
     python notebooks/02_evaluation_experiment.py
 
 Prints failure recall per taxonomy category, the false-alarm rate on
-clean plans, minimal-edit success, and the abstention rate — then writes
-results/evaluation.json and results/evaluation.csv. Used by CI.
+clean plans, minimal-edit success, the abstention rate, and the three
+chain metrics — then writes results/evaluation.json and
+results/evaluation.csv. Used by CI.
 """
 from __future__ import annotations
 
@@ -59,6 +60,12 @@ def main() -> None:
           f"false-alarm rate {metrics['false_alarm_rate']}, "
           f"minimal-edit success {metrics['minimal_edit_success']}, "
           f"abstention rate {metrics['abstention_rate']}")
+    print(f"Chains: recall {metrics['chain_recall']} "
+          f"({metrics['chains_found']}/{metrics['chains_expected']} expected found), "
+          f"break rate {metrics['chain_break_rate']} "
+          f"({metrics['chains_broken']}/{metrics['chains_detected']} broken by one edit), "
+          f"false-chain rate {metrics['false_chain_rate']} "
+          f"({metrics['clean_with_chains']}/{metrics['n_clean']} clean plans with a chain)")
     print("Results written to results/evaluation.json and results/evaluation.csv")
 
 
