@@ -1,0 +1,18 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install pytest
+      - run: pytest -q
+      - run: python -m clinical_pre_mortem_agent demo
+      - run: python -m clinical_pre_mortem_agent evaluate --out /tmp/evaluation
+      - run: python notebooks/02_evaluation_experiment.py
