@@ -1,0 +1,16 @@
+{
+  "n_cases": 42,
+  "n_faulty": 24,
+  "n_clean": 12,
+  "n_evidence_absent": 6,
+  "failure_recall": 1.0,
+  "injected_found": 24,
+  "injected_total": 24,
+  "false_alarm_rate": 0.0,
+  "clean_with_findings": 0,
+  "minimal_edit_success": 1.0,
+  "edits_valid": 24,
+  "edits_proposed": 24,
+  "abstention_rate": 1.0,
+  "abstain_correct": 6
+}
