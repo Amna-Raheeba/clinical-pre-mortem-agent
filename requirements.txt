@@ -1,4 +1,5 @@
 # Core package: standard library only, no runtime dependencies.
 # Optional extras (install only what you need):
-#   pip install -r requirements-dev.txt   # pytest for tests
+#   pip install pytest                    # tests
+#   pip install streamlit                 # dashboard only
 #   pip install streamlit>=1.36           # dashboard only

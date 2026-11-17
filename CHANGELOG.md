@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.2.0 — 2026-11-17
+
+- **Second-order failure chains (new):** when one failure enables a
+  second — the missing lab is the test that would have revealed the
+  drug accumulating, the missed visit is where the interaction would
+  have been caught — the agent reports the chain (depth, enabling
+  link, chain risk) and the single edit that breaks it, verified by
+  re-running chain detection on the edited plan. Measured on 8 seeded
+  chained cases: chain recall 1.00 (8/8), chain-break rate 1.00 (8/8),
+  false-chain rate 0.00 (0/12 clean plans). Dataset now 50 cases.
+- Knowledge base: gentamicin follow-up within 3 days (levels must be
+  reviewed shortly after starting).
+- Dashboard: failure-chains section in the pre-mortem tab and the
+  three chain metrics in the evaluation tab.
+- Audit fixes: `data/eval_plans.json` is now loaded by
+  `load_eval_cases()` and pinned to the code-built dataset by test;
+  removed unused `SEED` and the empty `scripts/` directory; fixed the
+  `requirements-dev.txt` reference in `requirements.txt`; the
+  Streamlit AppTest is now a real test (`tests/test_dashboard.py`)
+  and CI installs Streamlit for it. 89 tests.
+
 ## 0.1.0 — 2026-11-17
 
 Initial release.
